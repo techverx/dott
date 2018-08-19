@@ -4,8 +4,11 @@ use Illuminate\Routing\Router;
 
 /** @var $router Router */
 $router->group(['namespace' => 'dott\controllers', 'prefix' => 'api'], function (Router $router) {
-    $router->get('/', ['name' => 'business.index', 'uses' => 'BusinessesController@index']);
-    $router->post('/', ['name' => 'business.store', 'uses' => 'BusinessesController@store']);
+    $router->get('/businesses', ['name' => 'businesses.index', 'uses' => 'BussinessesController@index']);
+    $router->post('/businesses/', ['name' => 'businesses.store', 'uses' => 'BussinessesController@store']);
+    $router->get('/businesses/{id}', ['name' => 'businesses.get', 'uses' => 'BussinessesController@get']);
+    $router->patch('/businesses/{id}', ['name' => 'businesses.get', 'uses' => 'BussinessesController@get']);
+    $router->delete('/businesses/{id}', ['name' => 'businesses.get', 'uses' => 'BussinessesController@get']);
 });
 
 // catch-all route
