@@ -1,7 +1,10 @@
 {
     "require": {
-        "illuminate/database": "5.2.*",
-        "robmorgan/phinx": "0.5.*"
+        "illuminate/database": "5.5.*",
+        "illuminate/foundation/http/formrequest": "5.5.*",
+        "robmorgan/phinx": "0.5.*",
+        "illuminate/routing": "^5.5",
+        "illuminate/events": "^5.5"
     },
     "autoload": {
         "psr-4": {
