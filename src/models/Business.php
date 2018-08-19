@@ -7,4 +7,11 @@ class Business extends Model {
 
     protected $table = "business";
 
+    /**
+     * @return array
+     */
+    public function getList() {
+        return self::all()->toArray();
+    }
+
 }
