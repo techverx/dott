@@ -25,9 +25,9 @@ class BussinessesController extends BaseController
     /**
      * @return string
      */
-    public function index()
+    public function index(HttpRequest $request)
     {
-        $bussinesses = $this->bussinessServices->listing();
+        $bussinesses = $this->bussinessServices->listing($request);
         return json_encode([
             'status' => true,
             'message' => 'List of bussinesses',
@@ -100,4 +100,21 @@ class BussinessesController extends BaseController
         $response->setStatusCode(200);
         return $response;
     }
+
+    /**
+     * @param HttpRequest $request
+     * @return Response
+     */
+    public function search(HttpRequest $request){
+        $bussinesses = $this->bussinessServices->search($request);
+        $response = new Response();
+        $response->setContent([
+            'status' => 200,
+            'message' => 'Results',
+            'body' => $bussinesses
+        ] );
+        $response->setStatusCode(200);
+        return $response;
+    }
+
 }

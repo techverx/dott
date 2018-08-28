@@ -23,9 +23,9 @@ class BussinessRepo extends BaseRepo
     /**
      * @return array
      */
-    public function listing(){
+    public function listing(HttpRequest $request){
         $bussiness = new Bussiness();
-        return $bussiness->getList();
+        return $bussiness->skip($request->offset * $request->perpage)->take($request->perpage)->get()->toArray();
     }
 
     /**
@@ -57,5 +57,26 @@ class BussinessRepo extends BaseRepo
     public function delete($id){
         $bussiness = $this->get($id);
         $bussiness->destroy();
+    }
+
+    /**
+     * @param HttpRequest $request
+     * @return mixed
+     */
+    public function search(HttpRequest $request){
+        $bussiness = new Bussiness();
+        if($request->name != ''){
+            $bussiness = $bussiness::where('name', 'LIKE', "%{$request->name}%");
+        }
+        if($request->construction_year != ''){
+            $bussiness = $bussiness->where('construction_year', 'LIKE', "%{$request->construction_year}%");
+        }
+        if($request->class != ''){
+            $bussiness = $bussiness->where('class', 'LIKE', "%{$request->class}%");
+        }
+        if($request->governmental != ''){
+            $bussiness = $bussiness->where('governmental', 'LIKE', "%{$request->governmental}%");
+        }
+        return $bussiness->get();
     }
 }

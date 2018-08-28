@@ -4,6 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var $router Router */
 $router->group(['namespace' => 'dott\controllers', 'prefix' => 'api'], function (Router $router) {
+    $router->get('/businesses/search/', ['name' => 'businesses.search', 'uses' => 'BussinessesController@search']);
     $router->get('/businesses', ['name' => 'businesses.index', 'uses' => 'BussinessesController@index']);
     $router->post('/businesses/', ['name' => 'businesses.store', 'uses' => 'BussinessesController@store']);
     $router->get('/businesses/{id}', ['name' => 'businesses.get', 'uses' => 'BussinessesController@get']);

@@ -13,7 +13,6 @@ class CreateBusinessTable extends Migration
             $table->string('construction_year');
             $table->enum('class', [1, 2, 3]);
             $table->boolean('governmental');
-
             $table->timestamps();
         });
     }

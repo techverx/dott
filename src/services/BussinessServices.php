@@ -33,8 +33,8 @@ class BussinessServices extends BaseService
     /**
      * @return array
      */
-    public function listing(){
-        return $this->bussinessRepo->listing();
+    public function listing(HttpRequest $request){
+        return $this->bussinessRepo->listing($request);
     }
 
     /**
@@ -57,6 +57,14 @@ class BussinessServices extends BaseService
      */
     public function delete($id){
         return $this->bussinessRepo->delete($id);
+    }
+
+    /**
+     * @param HttpRequest $request
+     * @return mixed
+     */
+    public function search(HttpRequest $request){
+        return $this->bussinessRepo->search($request);
     }
 
 }
